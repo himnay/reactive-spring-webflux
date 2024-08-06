@@ -1,21 +1,16 @@
 package com.reactivespring.controller;
 
 import com.reactivespring.domain.MovieInfo;
-import com.reactivespring.exception.MovieInfoNotfoundException;
 import com.reactivespring.service.MoviesInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
 
-import javax.annotation.PostConstruct;
-import javax.print.attribute.standard.Media;
 import javax.validation.Valid;
 
 @RestController

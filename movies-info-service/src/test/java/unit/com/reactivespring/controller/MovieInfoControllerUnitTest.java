@@ -132,9 +132,6 @@ public class MovieInfoControllerUnitTest {
                 });
     }
 
-
-
-
     @Test
     void updateMovieInfo() {
         var id = "abc";

@@ -54,8 +54,8 @@ public class MoviesInfoRestClient {
                 }))
                 .bodyToMono(MovieInfo.class)
                //.retry(3)
-                //.retryWhen(Retry.fixedDelay(3, Duration.ofMillis(500)))
-                .retryWhen(RetryUtil.retrySpec())
+                .retryWhen(Retry.fixedDelay(3, Duration.ofMillis(500)))
+                //.retryWhen(RetryUtil.retrySpec())
                 .log();
 
     }

@@ -3,6 +3,7 @@ package com.reactivespring.controller;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.reactivespring.domain.Movie;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
@@ -17,10 +18,10 @@ import java.util.Objects;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureWebClient
-@AutoConfigureWireMock(port = 8084) // automaticaly spins up a httpserver in port 8084
+@AutoConfigureWireMock(port = 8084) // automatically spins up a httpserver in port 8084
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {
         "restClient.moviesInfoUrl=http://localhost:8084/v1/movieinfos",
         "restClient.reviewsUrl=http://localhost:8084/v1/reviews",
@@ -28,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MoviesControllerIntgTest {
 
     @Autowired
-    WebTestClient webTestClient;
+    private WebTestClient webTestClient;
 
 
     @BeforeEach
@@ -37,6 +38,7 @@ public class MoviesControllerIntgTest {
     }
 
     @Test
+    @DisplayName("test retrieve movie by id")
     void retrieveMovieById() {
         //given
         var movieId = "abc";
